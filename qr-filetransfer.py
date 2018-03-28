@@ -5,6 +5,7 @@ import socketserver
 import sys
 import os
 import threading
+from urllib.parse import quote
 
 import psutil
 import qrcode
@@ -69,7 +70,7 @@ def main():
         print('So far only support file translate')
         os._exit(1)
     ip = choose_networkcard()
-    url = 'http://' + ip + ':{port}/'.format(port=port) + file_path
+    url = 'http://' + ip + ':{port}/'.format(port=port) + quote(file_path)
     url_to_qrcode(url)
 
 

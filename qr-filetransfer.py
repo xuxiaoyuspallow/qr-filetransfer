@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# encoding: utf8
 
 import http.server
 import socketserver
@@ -59,7 +60,7 @@ def choose_networkcard():
 
 
 def main():
-    port = 8001
+    port = 8002
     t = threading.Thread(target=http_server,args=(port,))
     t.start()
     if len(sys.argv) < 2:
@@ -75,4 +76,6 @@ def main():
 
 
 if __name__ == '__main__':
+    # todo: 1. 退出程序时子线程没有退出，导致端口被占用， 2. 没有自动寻找未使用的端口，端口被占用时程序退出
+    # todo: 3. 显示网卡时顺序不固定  4.当url含有'/'时会报404
     main()
